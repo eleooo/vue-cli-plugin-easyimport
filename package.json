@@ -1,6 +1,6 @@
 {
   "name": "vue-cli-plugin-easyimport",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Auto gen import components statement in vue files",
   "main": "index.js",
   "types": "dist",

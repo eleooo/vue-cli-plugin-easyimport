@@ -26,6 +26,7 @@ const plugin = (api, options) => {
     {
       path: './src/components',
       extensions: ['vue', 'js', 'ts'],
+      initializer: '',
       ignore: [
         '**/*.stories.js', // ignore storybook files
       ],
