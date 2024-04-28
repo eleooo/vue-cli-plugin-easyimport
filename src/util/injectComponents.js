@@ -1,7 +1,7 @@
 //import { info } from '@vue/cli-shared-utils'
-import {TAG} from './tag'
-export function injectComponents (source, components) {
-  let importers = [],installers = [], coms = [];
+import { TAG } from './tag'
+export function injectComponents(source, components, options) {
+  let importers = [], installers = [], coms = [];
   components.forEach(item => {
     if (item.import) {
       importers.push(item.import)
@@ -14,7 +14,11 @@ export function injectComponents (source, components) {
     }
   });
   if (installers.length > 0) {
-    importers.push('import Vue from "vue";');
+    if (options.initializer) {
+      importers.push(options.initializer)
+    } else {
+      importers.push('import Vue from "vue";');
+    }
   }
   importers = importers.concat(installers)
   const newContent =
@@ -22,7 +26,7 @@ export function injectComponents (source, components) {
     ${importers.join('\n')}
     script.components = Object.assign({}, { ${coms.join(', ')} }, script.components);
     /* ${TAG} End */`
-  
+
   const hotReload = source.indexOf('/* hot reload */')
   if (hotReload > -1) {
     source = source.slice(0, hotReload) + newContent + '\n\n' + source.slice(hotReload)

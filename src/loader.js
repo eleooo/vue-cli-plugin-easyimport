@@ -40,7 +40,7 @@ export default async function (source) {
     return source
   }
 
-  let injectedSource = injectComponents(source, components)
+  let injectedSource = injectComponents(source, components, options)
   if (options.debug) {
     info('\r\n' + injectedSource, TAG)
   }

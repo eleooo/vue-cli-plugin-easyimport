@@ -12,13 +12,27 @@ function genComponet(tagKebabName, rule, regExp) {
     let importer = genComponetImport(tagKebabName, tagPascalName, matchedKebabName, matchedPascalName, rule)
     let installer = genComponetInstaller(tagKebabName, tagPascalName, matchedKebabName, matchedPascalName, rule)
     if (!importer) return false
+    let cName;
+    if(!installer) {
+        //gen component installer name
+        if(rule.componentName) {
+            cName = replace(rule.componentName, '$0', tagKebabName)
+            cName = replace(cName, '$1', tagPascalName)
+            cName = replace(cName, '$2', matchedKebabName)
+            cName = replace(cName, '$3', matchedPascalName)            
+        } else {
+            cName = tagPascalName
+        }
+    }
     return {
         import: importer,
-        install: installer
+        install: installer,
+        pascalName: cName
     }
 }
 
 function genComponetInstaller(tagKebabName, tagPascalName, matchedKebabName, matchedPascalName, rule) {
+    if (!rule.installer) return false
     let str
     if (isFunction(rule.installer)) {
         str = rule.installer(tagKebabName, tagPascalName, matchedKebabName, matchedPascalName)
@@ -35,6 +49,7 @@ function genComponetInstaller(tagKebabName, tagPascalName, matchedKebabName, mat
 }
 
 function genComponetImport(tagKebabName, tagPascalName, matchedKebabName, matchedPascalName, rule) {
+    if(!rule.importer) return false
     let str
     if (isFunction(rule.importer)) {
         str = rule.importer(tagKebabName, tagPascalName, matchedKebabName, matchedPascalName)

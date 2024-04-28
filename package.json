@@ -1,6 +1,6 @@
 {
   "name": "vue-cli-plugin-easyimport",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Auto gen import components statement in vue files",
   "main": "index.js",
   "types": "dist",
@@ -37,13 +37,10 @@
   "publishConfig": {
     "access": "public"
   },
-  "peerDependencies": {
-    "@vue/cli-service": "^3.0.0 || ^4.0.0-0"
-  },
   "devDependencies": {
-    "@vue/cli-service": "^4.5.10",
-    "@vue/cli-shared-utils": "^4.5.10",
-    "@vue/compiler-sfc": "^3.0.5",
+    "@vue/cli-service": "^5.0.8",
+    "@vue/cli-shared-utils": "^5.0.8",
+    "@vue/compiler-sfc": "^3.4.25",
     "bili": "^5.0.5",
     "chalk": "^4.1.0",
     "loader-utils": "^2.0.0",
