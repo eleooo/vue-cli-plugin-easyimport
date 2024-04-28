@@ -7,12 +7,12 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "vue": "^3.0.0",
+    "vue": "^3.2.13",
     "vue-cli-plugin-easyimport": "../../"
   },
   "devDependencies": {
     "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0"
+    "@vue/compiler-sfc": "^3.2.13"
   },
   "browserslist": [
     "> 1%",
